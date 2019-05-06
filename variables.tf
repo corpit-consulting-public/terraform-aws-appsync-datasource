@@ -3,7 +3,6 @@
 variable "api_id" {
   type        = "string"
   description = "The API ID of the GraphQL API for the DataSource"
-  default     = ""
 }
 
 variable "name" {
@@ -68,9 +67,10 @@ variable "region" {
   default     = ""
 }
 
-variable "aue_caller_credentials" {
+variable "use_caller_credentials" {
   type        = "string"
   description = "Set to true to use Amazon Cognito credentials with this Data source"
+  default     = "false" 
 }
 
 ##Variables for Elasticsearch_config
