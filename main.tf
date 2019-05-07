@@ -12,7 +12,9 @@ resource "aws_appsync_datasource" "example_2" {
   name             = "tf_appsync_example"
   service_role_arn = "${var.service_role_arn}"
   type             = "${var.type}"
-  table_name       = "${var.table_name}"
+  dynamodb_config {
+    table_name       = "${var.table_name}"
+  }
 }
 
 resource "aws_appsync_datasource" "example_3" {
