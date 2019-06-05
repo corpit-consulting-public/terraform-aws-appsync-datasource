@@ -1,7 +1,7 @@
 resource "aws_appsync_datasource" "example_1" {
   count            = "${var.type == "NONE" ? 1 : 0}"
   api_id           = "${var.api_id}"
-  name             = "tf_appsync_example"
+  name             = "${var.name}"
   service_role_arn = "${var.service_role_arn}"
   type             = "${var.type}"
 }
@@ -9,7 +9,7 @@ resource "aws_appsync_datasource" "example_1" {
 resource "aws_appsync_datasource" "example_2" {
   count            = "${var.type == "AMAZON_DYNAMODB" ? 1 : 0}"
   api_id           = "${var.api_id}"
-  name             = "tf_appsync_example"
+  name             = "${var.name}"
   service_role_arn = "${var.service_role_arn}"
   type             = "${var.type}"
   dynamodb_config {
@@ -20,7 +20,7 @@ resource "aws_appsync_datasource" "example_2" {
 resource "aws_appsync_datasource" "example_3" {
   count            = "${var.type == "AWS_LAMBDA" ? 1 : 0}"
   api_id           = "${var.api_id}"
-  name             = "tf_appsync_example"
+  name             = "${var.name}"
   service_role_arn = "${var.service_role_arn}"
   type             = "${var.type}"
   function_arn     = "${var.function_arn}"
@@ -29,7 +29,7 @@ resource "aws_appsync_datasource" "example_3" {
 resource "aws_appsync_datasource" "example_4" {
   count            = "${var.type == "AMAZON_ELASTICSEARCH" ? 1 : 0}"
   api_id           = "${var.api_id}"
-  name             = "tf_appsync_example"
+  name             = "${var.name}"
   service_role_arn = "${var.service_role_arn}"
   type             = "${var.type}"
   endpoint         = "${var.elasticsearch_endpoint}"
@@ -38,7 +38,7 @@ resource "aws_appsync_datasource" "example_4" {
 resource "aws_appsync_datasource" "example_5" {
   count            = "${var.type == "HTTP" ? 1 : 0}"
   api_id           = "${var.api_id}"
-  name             = "tf_appsync_example"
+  name             = "${var.name}"
   service_role_arn = "${var.service_role_arn}"
   type             = "${var.type}"
   endpoint         = "${var.http_endpoint}"
