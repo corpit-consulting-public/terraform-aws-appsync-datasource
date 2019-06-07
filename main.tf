@@ -23,7 +23,9 @@ resource "aws_appsync_datasource" "example_3" {
   name             = "${var.name}"
   service_role_arn = "${var.service_role_arn}"
   type             = "${var.type}"
-  function_arn     = "${var.function_arn}"
+  lambda_config {
+    function_arn   = "${var.function_arn}"
+  }
 }
 
 resource "aws_appsync_datasource" "example_4" {
@@ -32,7 +34,9 @@ resource "aws_appsync_datasource" "example_4" {
   name             = "${var.name}"
   service_role_arn = "${var.service_role_arn}"
   type             = "${var.type}"
-  endpoint         = "${var.elasticsearch_endpoint}"
+  elasticsearch_config {
+    endpoint       = "${var.elasticsearch_endpoint}"
+  }
 }
 
 resource "aws_appsync_datasource" "example_5" {
@@ -41,5 +45,7 @@ resource "aws_appsync_datasource" "example_5" {
   name             = "${var.name}"
   service_role_arn = "${var.service_role_arn}"
   type             = "${var.type}"
-  endpoint         = "${var.http_endpoint}"
+  http_config {
+    endpoint       = "${var.http_endpoint}"
+  }
 }
