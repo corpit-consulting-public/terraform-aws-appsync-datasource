@@ -9,11 +9,11 @@ Terraform module that creates AppSync-DataSource resources in AWS, of the follow
 * HTTP
 * None
 
-  _Important!
-    The following modules are required for the operation of AppSync Data sourece:
-  * Appsync GraphQL Module
-  * DynamoDB module if type is Amazon-DynamoDB
-  * Lambda Function Module if the type is Aws-Lambda_
+  _Important!_
+    _The following modules are required for the operation of AppSync Data sourece:_
+  * _Appsync GraphQL Module_
+  * _DynamoDB module if type is Amazon-DynamoDB_
+  * _Lambda Function Module if the type is Aws-Lambda_
 
 
 ## Usage
