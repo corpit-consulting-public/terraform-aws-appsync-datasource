@@ -8,13 +8,11 @@ variable "api_id" {
 variable "name" {
   type        = "string"
   description = "A user supplied name for the DataSource"
-  default     = ""
 } 
 
 variable "type" {
   type        = "string"
   description = "The type of the DataSource. Valid valued: AWS_LAMBDA, AMAZON_DYNAMODB, AMAZON_ELASTICSEARCH, HTTP, NONE"
-  default     = ""
 }
 
 variable "description"{
