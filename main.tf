@@ -43,7 +43,6 @@ resource "aws_appsync_datasource" "example_5" {
   count            = "${var.type == "HTTP" ? 1 : 0}"
   api_id           = "${var.api_id}"
   name             = "${var.name}"
-  service_role_arn = "${var.service_role_arn}"
   type             = "${var.type}"
   http_config {
     endpoint       = "${var.http_endpoint}"
