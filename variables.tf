@@ -1,5 +1,6 @@
 ##Variables for AppSync Data Source
 
+
 variable "api_id" {
   type        = string
   description = "The API ID of the GraphQL API for the DataSource"
