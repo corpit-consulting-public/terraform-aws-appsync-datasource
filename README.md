@@ -86,6 +86,8 @@ If you want to update README.md file, run that script while being in 'hooks' fol
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | api\_id | The API ID of the GraphQL API for the DataSource | string | n/a | yes |
+| name | A user supplied name for the DataSource | string | n/a | yes |
+| type | The type of the DataSource. Valid valued: AWS\_LAMBDA, AMAZON\_DYNAMODB, AMAZON\_ELASTICSEARCH, HTTP, NONE | string | n/a | yes |
 | description | A description of the DataSource | string | `""` | no |
 | dynamo\_config | DynamoDB settings | string | `""` | no |
 | elasticsearch\_config | AMAZON Elasticsearch settings | string | `""` | no |
@@ -94,11 +96,9 @@ If you want to update README.md file, run that script while being in 'hooks' fol
 | http\_config | HTTP settings | string | `""` | no |
 | http\_endpoint | HTTP URL | string | `""` | no |
 | lambda\_config | AWS Lambda settings | string | `""` | no |
-| name | A user supplied name for the DataSource | string | n/a | yes |
 | region | AWS region of the DynamoDB table. Default to corrent region | string | `""` | no |
 | service\_role\_arn | The IAM service role ARN for the DataSource | string | `""` | no |
 | table\_name | Name of the DynamoDB table | string | `""` | no |
-| type | The type of the DataSource. Valid valued: AWS_LAMBDA, AMAZON_DYNAMODB, AMAZON_ELASTICSEARCH, HTTP, NONE | string | n/a | yes |
 | use\_caller\_credentials | Set to true to use Amazon Cognito credentials with this Data source | string | `"false"` | no |
 
 ## Outputs
