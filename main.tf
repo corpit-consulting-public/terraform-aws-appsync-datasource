@@ -1,51 +1,38 @@
-resource "aws_appsync_datasource" "example_1" {
-  count            = "${var.type == "NONE" ? 1 : 0}"
-  api_id           = "${var.api_id}"
-  name             = "${var.name}"
-  service_role_arn = "${var.service_role_arn}"
-  type             = "${var.type}"
-}
+resource "aws_appsync_datasource" "datasource" {
+  api_id           = var.api_id
+  name             = var.name
+  service_role_arn = var.service_role_arn
+  type             = var.type
 
-resource "aws_appsync_datasource" "example_2" {
-  count            = "${var.type == "AMAZON_DYNAMODB" ? 1 : 0}"
-  api_id           = "${var.api_id}"
-  name             = "${var.name}"
-  service_role_arn = "${var.service_role_arn}"
-  type             = "${var.type}"
-  dynamodb_config {
-    table_name       = "${var.table_name}"
+
+  dynamic "dynamodb_config" {
+      for_each = var.dynamo_config
+
+      content {
+        table_name = var.type == "AMAZON_DYNAMODB" ? var.table_name : null
+      }
   }
-}
 
-resource "aws_appsync_datasource" "example_3" {
-  count            = "${var.type == "AWS_LAMBDA" ? 1 : 0}"
-  api_id           = "${var.api_id}"
-  name             = "${var.name}"
-  service_role_arn = "${var.service_role_arn}"
-  type             = "${var.type}"
-  lambda_config {
-    function_arn   = "${var.function_arn}"
+  dynamic "lambda_config" {
+      for_each = var.lambda_config
+
+      content {
+        function_arn = var.type == "AWS_LAMBDA" ? var.function_arn : null
+      }
   }
-}
 
-resource "aws_appsync_datasource" "example_4" {
-  count            = "${var.type == "AMAZON_ELASTICSEARCH" ? 1 : 0}"
-  api_id           = "${var.api_id}"
-  name             = "${var.name}"
-  service_role_arn = "${var.service_role_arn}"
-  type             = "${var.type}"
-  elasticsearch_config {
-    endpoint       = "${var.elasticsearch_endpoint}"
+  dynamic "elasticsearch_config" {
+      for_each = var.elasticsearch_config
+
+      content {
+        endpoint = var.type == "AMAZON_ELASTICSEARCH" ? var.endpoint : null
+      }
   }
-}
+  dynamic "http_config" {
+      for_each = var.dynamo_config
 
-resource "aws_appsync_datasource" "example_5" {
-  count            = "${var.type == "HTTP" ? 1 : 0}"
-  api_id           = "${var.api_id}"
-  name             = "${var.name}"
-  service_role_arn = "${var.service_role_arn}"
-  type             = "${var.type}"
-  http_config {
-    endpoint       = "${var.http_endpoint}"
+      content {
+        endpoint = var.type == "HTTP" ? var.endpoint : null
+      }
   }
 }
